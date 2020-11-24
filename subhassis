@@ -1,0 +1,22 @@
+class Solution:
+    def minadding(self, a, n):
+        self.rsum = 0
+        self.lsum = 0
+        for i in range(int(n / 2)):
+            self.lsum += self.lsum + a[i]
+
+        for i in range(int(n / 2), 6):
+            self.rsum += a[i]
+        if self.lsum == self.rsum:
+            return 0
+        elif self.lsum < self.rsum:
+            return self.rsum - self.lsum
+        else:
+            return self.lsum - self.rsum
+
+
+n = int(input("array length:"))
+a = list(map(int, input("array elements:").split()))
+s = Solution()
+fun = s.minadding(a, n)
+print(fun)
